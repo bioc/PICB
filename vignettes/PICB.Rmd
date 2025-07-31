@@ -43,7 +43,7 @@ Only very limited programming knowledge is needed to run PICB. Check out the fol
 It is possible to run PICB in RStudio, in an R script on your local machine or with High Performance Computing (HPC) resources or in Jupyter Notebook (using R). Keep in mind that as for any handling of large-scale sequencing data you need to have sufficient memory on your device (or cluster) allocated. 
 
 `PICB` requires the CRAN packages `r CRANpkg("data.table")`, `r CRANpkg("seqinr")`, `r CRANpkg("openxlsx")`, `r CRANpkg("dplyr")`, 
-and the Bioconductor packages `r Biocpkg("IRanges")`, `r Biocpkg("GenomicRanges")`, `r Biocpkg("GenomicAlignments")`, `r Biocpkg("Rsamtools")`, `r Biocpkg("Biostrings")`, `r Biocpkg("GenomeInfoDb")`, `r Biocpkg("BSgenome")` and `r Biocpkg("rtracklayer")` installed. 
+and the Bioconductor packages `r Biocpkg("IRanges")`, `r Biocpkg("GenomicRanges")`, `r Biocpkg("GenomicAlignments")`, `r Biocpkg("Rsamtools")`, `r Biocpkg("Biostrings")`, `r Biocpkg("Seqinfo")`, `r Biocpkg("BSgenome")` and `r Biocpkg("rtracklayer")` installed. 
 
 Load PICB in your R environment:
 
@@ -64,7 +64,7 @@ BiocManager::install(c(
     "GenomicAlignments",
     "Rsamtools",
     "Biostrings",
-    "GenomeInfoDb",
+    "Seqinfo",
     "BSgenome",
     "rtracklayer"
 ))
@@ -132,7 +132,7 @@ b. **Using chromosome names and lengths**
 
 If you have the chromosome names and lengths, create a `Seqinfo` object:
 ```{r load_myGenome2}
-myGenome <- GenomeInfoDb::Seqinfo(
+myGenome <- Seqinfo::Seqinfo(
     seqnames = c("chr2L", "chr2R", "chr3L", "chr3R", "chr4", "chrX", "chrY"),
     seqlengths = c(23513712, 25286936, 28110227, 32079331, 1348131, 23542271, 3667352)
 )
@@ -144,7 +144,7 @@ c. **Using a Seqinfo object**
 Or use an existing `Seqinfo` object:
 
 ```{r load_myGenome3}
-myGenome <- GenomeInfoDb::Seqinfo(genome = "dm6")
+myGenome <- Seqinfo::Seqinfo(genome = "dm6")
 ```
 
 d. **Using a FASTA file**

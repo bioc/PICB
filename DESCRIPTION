@@ -1,6 +1,6 @@
 Package: PICB
 Title: piRNA Cluster Builder
-Version: 1.1.0
+Version: 1.1.1
 Authors@R: c(person("Pavol", "Genzor",  role = c("aut")),
     person("Aleksandr", "Friman", email="haase-lab-bioinfo@nih.gov",  role = c("aut")),
     person("Daniel", "Stoyko", role = c("aut")),
@@ -22,9 +22,9 @@ License: CC0
 Encoding: UTF-8
 Imports:
     utils,
+    Seqinfo,
     GenomicRanges,
     GenomicAlignments,
-    GenomeInfoDb,
     Biostrings,
     Rsamtools,
     data.table,
@@ -36,6 +36,7 @@ Imports:
     S4Vectors,
     methods
 Suggests: 
+    GenomeInfoDb,
     knitr,
     rtracklayer, 
     testthat,

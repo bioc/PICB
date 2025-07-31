@@ -78,13 +78,13 @@ PICBload <- function(
             SI <- genome_result$SeqInfo
             chrom_mismatch_flag <- genome_result$chrom_mismatch
 
-            REG.CHR <- GenomeInfoDb::seqnames(SI)
+            REG.CHR <- Seqinfo::seqnames(SI)
             BAM.FILE.HEADER <- Rsamtools::BamFile(BAMFILE)
-            BAM.FILE.CHR <- GenomeInfoDb::seqnames(GenomeInfoDb::seqinfo(BAM.FILE.HEADER))
+            BAM.FILE.CHR <- Seqinfo::seqnames(Seqinfo::seqinfo(BAM.FILE.HEADER))
             REG.CHR <- REG.CHR[REG.CHR %in% BAM.FILE.CHR]
             WHICH <- GenomicRanges::GRanges(
                 seqnames = REG.CHR,
-                ranges = IRanges::IRanges(start = rep(1, length(REG.CHR)), end = GenomeInfoDb::seqlengths(SI)[REG.CHR]),
+                ranges = IRanges::IRanges(start = rep(1, length(REG.CHR)), end = Seqinfo::seqlengths(SI)[REG.CHR]),
                 strand = rep("*", length(REG.CHR))
             )
             PARAM <- Rsamtools::ScanBamParam(
@@ -199,7 +199,7 @@ PICBload <- function(
             GenomeInfoDb::seqlevelsStyle(GARP.GR) <- SEQ.LEVELS.STYLE
         }
 
-        if (!all(unique(GenomeInfoDb::seqnames(GARP.GR)) %in% GenomeInfoDb::seqnames(SI))) {
+        if (!all(unique(Seqinfo::seqnames(GARP.GR)) %in% Seqinfo::seqnames(SI))) {
             chrom_mismatch_flag <- TRUE
             warning("Some or all chromosome names in BAM file do not match those in REFERENCE.GENOME.",
                 "\nNot filtered by chromosome names. Ensure REFERENCE.GENOME is compatible with the BAMFILE.")

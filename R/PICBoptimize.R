@@ -193,7 +193,7 @@ PICBoptimize <- function(
             outDF[[paste0("mean.RPKM.", locustype)]][is.na(outDF[[paste0("mean.RPKM.", locustype)]])] <- 0
         }
         SI <- PICBgetchromosomes(REFERENCE.GENOME, SEQ.LEVELS.STYLE)$SeqInfo
-        GenomeSize <- sum(GenomeInfoDb::seqlengths(SI))
+        GenomeSize <- sum(Seqinfo::seqlengths(SI))
         for (locustype in c(uniqueonly, uniqueandprimary, allalignments)) {
         outDF[[paste0("fraction.of.genome.space.", locustype)]] <- outDF[[paste0("total.width.", locustype)]] / (2 * GenomeSize)
         }
@@ -202,7 +202,7 @@ PICBoptimize <- function(
         outDF[["mean.RPKM.clusters"]] <- outDF[["reads.explained.by.clusters"]] * 1e9 / (outDF[["total.width.clusters"]] * totalReads)
         outDF[["mean.RPKM.clusters"]][is.na(outDF[["mean.RPKM.clusters"]])] <- 0
         SI <- PICBgetchromosomes(REFERENCE.GENOME, SEQ.LEVELS.STYLE)$SeqInfo
-        GenomeSize <- sum(GenomeInfoDb::seqlengths(SI))
+        GenomeSize <- sum(Seqinfo::seqlengths(SI))
         outDF[["fraction.of.genome.space.clusters"]] <- outDF[["total.width.clusters"]] / (2 * GenomeSize)
     }
     return(outDF)

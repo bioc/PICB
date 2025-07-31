@@ -57,9 +57,9 @@ PICBannotate <- function(
 
     PICBfixCoverage <- function(inCov, SI) {
         for (i in seq_along(SI)) {
-            chrname <- GenomeInfoDb::seqnames(SI)[i]
+            chrname <- Seqinfo::seqnames(SI)[i]
             if (chrname %in% names(inCov)) {
-                targetLen <- GenomeInfoDb::seqlengths(SI)[chrname]
+                targetLen <- Seqinfo::seqlengths(SI)[chrname]
                 currentLen <- length(inCov[[chrname]])
                 deltaLen <- targetLen - currentLen
                 if (deltaLen > 0) {

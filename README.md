@@ -66,7 +66,7 @@ You will need to install and load the following required R packages:
 install.packages(c("data.table", "seqinr", "openxlsx", "dplyr"))
 if (!require("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
-BiocManager::install(c("IRanges", "GenomicRanges", "GenomicAlignments", "Rsamtools", "Biostrings", "GenomeInfoDb", "BSgenome", "rtracklayer"))
+BiocManager::install(c("IRanges", "GenomicRanges", "GenomicAlignments", "Rsamtools", "Biostrings", "Seqinfo", "BSgenome", "rtracklayer"))
 ```
 > 💡 In case you have not worked with GRanges yet, we recommend reading the following <a href=https://bioconductor.org/packages/release/bioc/vignettes/GenomicRanges/inst/doc/GenomicRangesIntroduction.html target="_blank">GRanges Introduction</a>.
 
@@ -122,7 +122,7 @@ myGenome <- "BSgenome.Dmelanogaster.UCSC.dm6"
 
 
 ```R
-myGenome <- GenomeInfoDb::Seqinfo(
+myGenome <- Seqinfo::Seqinfo(
     seqnames = c("chr2L", "chr2R", "chr3L", "chr3R", "chr4", "chrX", "chrY"), 
     seqlengths = c(23513712, 25286936, 28110227, 32079331, 1348131, 23542271, 3667352))
 ```
@@ -132,7 +132,7 @@ myGenome <- GenomeInfoDb::Seqinfo(
 Or use an existing `Seqinfo` object:
 
 ```R
-myGenome <- GenomeInfoDb::Seqinfo(genome = "dm6")
+myGenome <- Seqinfo::Seqinfo(genome = "dm6")
 ```
 
 

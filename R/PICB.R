@@ -37,7 +37,7 @@
 #' library(PICB)
 #' 
 #' # 1. Load Required Genome from e.g. Seqinfo (check all options in Vignette or ReadMe)
-#' myGenome <- GenomeInfoDb::Seqinfo(
+#' myGenome <- Seqinfo::Seqinfo(
 #'     seqnames = c("chr2L", "chr2R", "chr3L", "chr3R", "chr4", "chrX", "chrY"),
 #'     seqlengths = c(23513712, 25286936, 28110227, 32079331, 1348131, 23542271, 3667352)
 #' )

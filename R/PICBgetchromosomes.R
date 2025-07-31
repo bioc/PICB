@@ -14,7 +14,7 @@
 PICBgetchromosomes <- function(REFERENCE.GENOME, SEQ.LEVELS.STYLE = "UCSC") {    
     # Get SeqInfo object first, regardless of SEQ.LEVELS.STYLE
     if (methods::is(REFERENCE.GENOME, "character")) {  #BSgenome object
-        SI <- GenomeInfoDb::seqinfo(x = eval(parse(text = REFERENCE.GENOME)))
+        SI <- Seqinfo::seqinfo(x = eval(parse(text = REFERENCE.GENOME)))
     } else if (methods::is(REFERENCE.GENOME, "Seqinfo")) {
         SI <- REFERENCE.GENOME
     } else {
@@ -36,7 +36,7 @@ PICBgetchromosomes <- function(REFERENCE.GENOME, SEQ.LEVELS.STYLE = "UCSC") {
     
     # Update style and drop circular chromosomes
     GenomeInfoDb::seqlevelsStyle(SI) <- SEQ.LEVELS.STYLE
-    SI <- GenomeInfoDb::dropSeqlevels(x = SI, value = names(which(GenomeInfoDb::isCircular(SI))))
+    SI <- GenomeInfoDb::dropSeqlevels(x = SI, value = names(which(Seqinfo::isCircular(SI))))
 
     return(list(SeqInfo = SI, chrom_mismatch = FALSE))
 }

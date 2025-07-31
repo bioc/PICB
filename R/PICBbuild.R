@@ -125,8 +125,8 @@ PICBbuild <- function(
             SEQ.LEVELS.STYLE <- NA
         }
         if (is.na(SEQ.LEVELS.STYLE)) {
-            KEEP.SEQLEVELS <- GenomeInfoDb::seqlevels(SI)
-            KEEP.SEQLEVELS <- KEEP.SEQLEVELS[KEEP.SEQLEVELS %in% GenomeInfoDb::seqlevels(IN.ALIGNMENTS[[columnName]])]
+            KEEP.SEQLEVELS <- Seqinfo::seqlevels(SI)
+            KEEP.SEQLEVELS <- KEEP.SEQLEVELS[KEEP.SEQLEVELS %in% Seqinfo::seqlevels(IN.ALIGNMENTS[[columnName]])]
             IN.ALIGNMENTS[[columnName]] <- GenomeInfoDb::keepSeqlevels(x = IN.ALIGNMENTS[[columnName]], value = KEEP.SEQLEVELS, pruning.mode = "coarse")
         }
     }
@@ -143,7 +143,7 @@ PICBbuild <- function(
 
     if (VERBOSITY > 1) message("\tSliding window analysis")
     if (VERBOSITY > 1) message("\t\tUNIQUE MAPPERS\n\t\tWINDOW: ", UNIQUEMAPPERS.SLIDING.WINDOW.WIDTH, "\n\t\tSTEP: ", UNIQUEMAPPERS.SLIDING.WINDOW.STEP)
-    AG.gr <- GenomicRanges::GRanges(data.table::data.table("chr" = GenomicRanges::seqnames(SI), "start" = 1, "end" = GenomeInfoDb::seqlengths(SI), "strand" = "*"))
+    AG.gr <- GenomicRanges::GRanges(data.table::data.table("chr" = GenomicRanges::seqnames(SI), "start" = 1, "end" = Seqinfo::seqlengths(SI), "strand" = "*"))
     AG.sw.uniq <- unlist(GenomicRanges::slidingWindows(x = AG.gr, width = UNIQUEMAPPERS.SLIDING.WINDOW.WIDTH, step = UNIQUEMAPPERS.SLIDING.WINDOW.STEP))
 
     ## Make genome sliding window for multi mappers

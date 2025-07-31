@@ -4,7 +4,7 @@ test_that("PICBloadfasta loads a valid FASTA file correctly", {
     writeLines(c(">chr1", "ATCG", ">chr2", "GGT"), temp_fasta)
 
     # Expected output (mocked for illustration)
-    expected_output <- GenomeInfoDb::Seqinfo(
+    expected_output <- Seqinfo::Seqinfo(
         seqnames = c("chr1", "chr2"),
         seqlengths = c(4, 3),
         isCircular = c(NA, NA),

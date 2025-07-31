@@ -55,7 +55,7 @@ if (length(setdiff(cran_packages, installed.packages()[,"Package"])) > 0)
 # Bioconductor packages
 if (!require("BiocManager", quietly = TRUE)) install.packages("BiocManager")
 
-bio_packages <- c("BiocManager", "IRanges", "GenomicRanges", "GenomicAlignments", "Rsamtools", "Biostrings", "GenomeInfoDb", "BSgenome", "rtracklayer")
+bio_packages <- c("BiocManager", "IRanges", "GenomicRanges", "GenomicAlignments", "Rsamtools", "Biostrings", "Seqinfo", "BSgenome", "rtracklayer")
 if (length(setdiff(bio_packages, installed.packages()[,"Package"])) > 0) BiocManager::install(setdiff(bio_packages, installed.packages()[,"Package"]), ask = FALSE) else message("All required Bioconductor packages are already installed.")
 
 
@@ -82,12 +82,12 @@ library("PICB")
 library("BSgenome.Dmelanogaster.UCSC.dm6")
 myGenome <- "BSgenome.Dmelanogaster.UCSC.dm6"
 # b. Provide a Seqinfo object containing the chromosome names and lengths according to the BAM file.
-# myGenome <- GenomeInfoDb::Seqinfo(
+# myGenome <- Seqinfo::Seqinfo(
 #     seqnames = c("chr2L", "chr2R", "chr3L", "chr3R", "chr4", "chrX", "chrY"),
 #     seqlengths = c(23513712, 25286936, 28110227, 32079331, 1348131, 23542271, 3667352)
 # )
 # c. Provide supported genome as Seqinfo object.
-# myGenome <- GenomeInfoDb::Seqinfo(genome = "dm6")
+# myGenome <- Seqinfo::Seqinfo(genome = "dm6")
 # d. Provide a fasta file containing the reference genome sequence.
 # myGenome <- PICBloadfasta("dm6.fa")
 

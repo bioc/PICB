@@ -121,7 +121,7 @@ test_that("PICBload loads BAM file with default parameters the same with using t
     expect_equal(result, expectedResult)
 
     # Using genome name
-    myGenome <- GenomeInfoDb::Seqinfo(genome = "dm6")
+    myGenome <- Seqinfo::Seqinfo(genome = "dm6")
     result <- PICBload(
         BAMFILE = test_bam,
         REFERENCE.GENOME = myGenome

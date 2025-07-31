@@ -189,7 +189,7 @@ test_that("PICBbuild loads BAM file with default parameters the same with using 
     expect_equal(result, test_ranges)
 
     # Using genome name
-    myGenome <- GenomeInfoDb::Seqinfo(genome = "dm6")
+    myGenome <- Seqinfo::Seqinfo(genome = "dm6")
     result <- PICBbuild(
         IN.ALIGNMENTS = test_alignments,
         REFERENCE.GENOME = myGenome,

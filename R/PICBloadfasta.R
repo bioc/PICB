@@ -23,5 +23,5 @@ PICBloadfasta <- function(FASTA.NAME = NULL) {
     FAdata <- seqinr::read.fasta(FASTA.NAME)
     FAnames <- names(FAdata)
     FAlengths <- lengths(FAdata)
-    return(GenomeInfoDb::Seqinfo(seqnames = FAnames, seqlengths = FAlengths))
+    return(Seqinfo::Seqinfo(seqnames = FAnames, seqlengths = FAlengths))
 }
